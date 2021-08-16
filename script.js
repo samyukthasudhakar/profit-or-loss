@@ -2,37 +2,42 @@ const stockPrice = document.querySelector("#stock-price");
 const stockQty = document.querySelector("#stock-qty");
 const currentPrice = document.querySelector("#current-price");
 const find = document.querySelector("#calculate");
-const result = document.querySelector("#result");
+const absolute = document.querySelector("#absolute");
+const percentage = document.querySelector("#percentage");
 
 function calculateProfitOrLoss(ip,qty,curr){
     if(ip > curr){
         
         var loss = (ip-curr) * qty;
         var lossPercent = (loss/ip)*100;
-        result.innerText = "Sorry you have incurred loss of " + loss + " and loss percentage is " + lossPercent+"% 😥";
+        absolute.innerText = "Loss : " + loss + " Rs";
+        percentage.innerText="Loss Percentage : " + lossPercent + " % 😥";
     }
     else if(curr > ip){
         
         var profit = (curr-ip) * qty;
         var profitPercent = (profit/ip)*100 ;
-        result.innerText = "You have incurred profit of " + profit + " and profit percentage is " + profitPercent+"% 🤑";
+        absolute.innerText = "Profit : " + profit +" Rs";
+        percentage.innerText="Profit Percentage : " + profitPercent + " % 🥳";
     }
     else{
-        result.innerText = "No loss, no gain 🥳"
+        absolute.innerText = "No loss, no gain 🥳 "
+        percentage.innerText="";
     }
 }
 function findProfitOrLoss(){
 
-    var ip = Number(stockPrice.value);
-    var qty = Number(stockQty.value);
-    var curr = Number(currentPrice.value);
+    var ip = stockPrice.value;
+    var qty = stockQty.value;
+    var curr = currentPrice.value;
 
-    if(ip===0 || qty===0 || curr===0){
-        result.innerText="Please fill in all fields ✍🏽";
+    if(ip==="" || qty==="" || curr===""){
+        absolute.innerText="Please fill in all fields ✍🏽";
+        percentage.innerText="";
     }
 
     else{
-        calculateProfitOrLoss(ip,qty,curr);
+        calculateProfitOrLoss(Number(ip),Number(qty),Number(curr));
     }
     
 }
