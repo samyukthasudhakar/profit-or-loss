@@ -8,16 +8,16 @@ const percentage = document.querySelector("#percentage");
 function calculateProfitOrLoss(ip,qty,curr){
     if(ip > curr){
         
-        var loss = (ip-curr) * qty;
-        var lossPercent = (loss/ip)*100;
-        absolute.innerText = "Loss : " + loss + " Rs";
+        var loss = (ip-curr);
+        var lossPercent = ((loss/ip)*100).toFixed(2);
+        absolute.innerText = "Loss : " + (loss*qty) + " Rs";
         percentage.innerText="Loss Percentage : " + lossPercent + " % 😥";
     }
     else if(curr > ip){
         
-        var profit = (curr-ip) * qty;
-        var profitPercent = (profit/ip)*100 ;
-        absolute.innerText = "Profit : " + profit +" Rs";
+        var profit = (curr-ip);
+        var profitPercent = ((profit/ip)*100).toFixed(2) ;
+        absolute.innerText = "Profit : " + (profit * qty) +" Rs";
         percentage.innerText="Profit Percentage : " + profitPercent + " % 🥳";
     }
     else{
