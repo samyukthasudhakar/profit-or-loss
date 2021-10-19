@@ -35,6 +35,10 @@ function findProfitOrLoss(){
         absolute.innerText="Please fill in all fields ✍🏽";
         percentage.innerText="";
     }
+    else if(ip<0 || qty<0 || curr<0){
+        absolute.innerText="Please enter positive values only ✍🏽";
+        percentage.innerText="";
+    }
 
     else{
         calculateProfitOrLoss(Number(ip),Number(qty),Number(curr));
